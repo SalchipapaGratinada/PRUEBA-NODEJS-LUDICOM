@@ -19,7 +19,7 @@ const getAreas = async (req, res) =>{
 const getArea = async (req, res) =>{
     try {
         const idArea = req.params.idArea;
-        bd.query('SELECT * FROM Areas WHERE idArea = ?;', [idArea], (err, data) => {
+        bd.query('SELECT * FROM Areas WHERE codigo = ?;', [idArea], (err, data) => {
             if (err) {
               throw err;
             }
@@ -57,7 +57,7 @@ const UpdateArea = async(req, res) =>{
     try {
         const idArea = req.params.idArea;
         const {codigo, nombre, lider, estado} = req.body;
-        bd.query('UPDATE Areas SET codigo = ?, nombre = ?, lider = ?, estado = ? WHERE idArea = ?;', [codigo, nombre, lider, estado, idArea], (err, data) => {
+        bd.query('UPDATE Areas SET codigo = ?, nombre = ?, lider = ?, estado = ? WHERE codigo = ?;', [codigo, nombre, lider, estado, idArea], (err, data) => {
             if (err) {
               throw err;
             }
@@ -75,7 +75,7 @@ const UpdateArea = async(req, res) =>{
 const deleteArea = async (req, res) =>{
     try {
         const idArea = req.params.idArea;
-        bd.query('DELETE FROM Areas WHERE idArea = ?;', [idArea], (err, data) => {
+        bd.query('DELETE FROM Areas WHERE codigo = ?;', [idArea], (err, data) => {
             if (err) {
               throw err;
             }
